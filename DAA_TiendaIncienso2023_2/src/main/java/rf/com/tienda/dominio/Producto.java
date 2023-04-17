@@ -3,18 +3,15 @@ package rf.com.tienda.dominio;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import rf.com.tienda.exception.DomainException;
 import rf.com.tienda.util.ErrorMessages;
 import rf.com.tienda.util.Validator;
 
@@ -23,7 +20,7 @@ import rf.com.tienda.util.Validator;
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id_producto;         //id de producto
 	private String pro_descripcion;
 	private String pro_desLarga;
@@ -62,7 +59,7 @@ public class Producto {
 
 
 
-	public void setId_producto(String id_producto) {
+	public void setId_producto(String id_producto) throws DomainException  {
 		
 		if(Validator.esIdProductoValido(id_producto))
 		{
@@ -70,7 +67,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_002);
+			throw new DomainException(ErrorMessages.PROERR_002);
 		}
 		
 	}
@@ -83,7 +80,7 @@ public class Producto {
 
 
 
-	public void setPro_descripcion(String pro_descripcion) {
+	public void setPro_descripcion(String pro_descripcion) throws DomainException {
 		
 		if(Validator.esDEscripcionValida(pro_descripcion))
 		{
@@ -91,9 +88,8 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_003);
+			throw new DomainException(ErrorMessages.PROERR_003);
 		}
-		
 	}
 
 
@@ -104,7 +100,7 @@ public class Producto {
 
 
 
-	public void setPro_desLarga(String pro_desLarga) {
+	public void setPro_desLarga(String pro_desLarga) throws DomainException{
 		
 		if(Validator.esDesLargaValida(pro_desLarga))
 		{
@@ -112,7 +108,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_004);
+			throw new DomainException(ErrorMessages.PROERR_004);
 		}
 	}
 
@@ -124,7 +120,7 @@ public class Producto {
 
 
 
-	public void setPro_precio(double pro_precio) {
+	public void setPro_precio(double pro_precio) throws DomainException {
 		
 		if(Validator.proPRecioValido(pro_precio))
 		{
@@ -132,7 +128,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_006);
+			throw new DomainException(ErrorMessages.PROERR_006);
 		}
 		
 	}
@@ -145,14 +141,14 @@ public class Producto {
 
 
 
-	public void setPro_stock(int pro_stock) {
+	public void setPro_stock(int pro_stock) throws DomainException {
 		if(pro_stock>=0)
 		{
 			this.pro_stock = pro_stock;
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_007);
+			throw new DomainException(ErrorMessages.PROERR_007);
 		}
 		
 	}
@@ -165,7 +161,7 @@ public class Producto {
 
 
 
-	public void setPro_fecRepos(LocalDate pro_fecRepos) {
+	public void setPro_fecRepos(LocalDate pro_fecRepos) throws DomainException{
 		
 		if(Validator.proFecRepos(pro_fecRepos))
 		{
@@ -173,7 +169,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_005);
+			throw new DomainException(ErrorMessages.PROERR_005);
 		}
 		
 	}
@@ -187,7 +183,7 @@ public class Producto {
 
 
 
-	public void setPro_fecActi(LocalDate pro_fecActi) {
+	public void setPro_fecActi(LocalDate pro_fecActi) throws DomainException {
 		
 		if(Validator.proFecActivacion(pro_fecActi))
 		{
@@ -196,7 +192,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_005);
+			throw new DomainException(ErrorMessages.PROERR_005);
 		}
 	}
 
@@ -208,7 +204,7 @@ public class Producto {
 
 
 
-	public void setPro_fecDesacti(LocalDate pro_fecDesacti) {
+	public void setPro_fecDesacti(LocalDate pro_fecDesacti) throws DomainException{
 		
 		if(Validator.proFecDesactivacion(pro_fecDesacti))
 		{
@@ -217,7 +213,7 @@ public class Producto {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.PROERR_005);
+			throw new DomainException(ErrorMessages.PROERR_005);
 		}
 	}
 

@@ -1,7 +1,6 @@
 package rf.com.tienda.dominio;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Direccion {

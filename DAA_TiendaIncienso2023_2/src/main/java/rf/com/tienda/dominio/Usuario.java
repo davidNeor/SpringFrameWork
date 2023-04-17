@@ -2,10 +2,11 @@ package rf.com.tienda.dominio;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import rf.com.tienda.util.ErrorMessages;
 import rf.com.tienda.util.Validator;
 
@@ -13,7 +14,7 @@ import rf.com.tienda.util.Validator;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_usuario;
 	private String user_nombre;
 	private String user_email;

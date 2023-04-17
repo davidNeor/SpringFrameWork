@@ -1,9 +1,10 @@
 package rf.com.tienda.dominio;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import rf.com.tienda.exception.DomainException;
 import rf.com.tienda.util.Validator;
 
@@ -19,7 +20,7 @@ import rf.com.tienda.util.Validator;
 public class Categoria {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_categoria;			//identificador categoria
 	
 	private String cat_nombre;			//nombre de la categoria
