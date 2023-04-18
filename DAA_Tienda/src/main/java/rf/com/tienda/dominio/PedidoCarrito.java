@@ -24,14 +24,16 @@ import javax.persistence.ElementCollection;
 public class PedidoCarrito {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int id_pedido;
-	@OneToOne
-	private Usuario id_usuario;
+	//@OneToOne(mappedBy = "id_usuario")	
+	private String usuario;
 	//como va a ser una relación one-to-many, lo mejor es implementar este campo mediante una colección, aquí irá una relación one-to-many
-	@OneToMany(mappedBy="pedido")
-	private List<Producto>producto=new ArrayList<Producto>();
+	//@OneToMany(mappedBy="pedido")	
+	private String cod_producto;
+	@Column( nullable = false)
 	private int car_cantidad;
+	@Column( nullable = false)
 	private double car_precio;
 	//renombramos los campos de direccion para distinguir los campos 
 	@Embedded
@@ -44,6 +46,7 @@ public class PedidoCarrito {
 	        @AttributeOverride(name = "dir_pais", column = @Column(name = "envio_pais")),
 	        @AttributeOverride(name = "dir_correoE", column = @Column(name = "envio_correoE"))	        
 	    })
+	@Column( nullable = false)
 	private Direccion car_envio;
 	@Embedded
 	@AttributeOverrides({
@@ -55,14 +58,23 @@ public class PedidoCarrito {
         @AttributeOverride(name = "dir_pais", column = @Column(name = "pago_pais")),
         @AttributeOverride(name = "dir_correoE", column = @Column(name = "pago_correoE"))	        
     })
+	@Column( nullable = false)
 	private Direccion car_pago;
+	@Column( nullable = false)
 	private String car_tarjeta;
+	@Column( nullable = false)
+
 	private LocalDate car_feCadud;
+	@Column( nullable = false)
+
 	private int car_ccv;
+	@Column( nullable = false)
 	private String car_nombre;
+	@Column( nullable = false)
 	private int car_stat;
 	@ElementCollection(fetch=FetchType.LAZY)
 	@CollectionTable(name="TABLA_FECHAS")
+	@Column( nullable = false)
 	private List<String> car_feCambio;
 	
 	
@@ -90,16 +102,6 @@ public class PedidoCarrito {
 
 
 
-	public Usuario getId_usuario() {
-		return id_usuario;
-	}
-
-
-
-	public void setId_usuario(Usuario id_usuario) {
-		this.id_usuario = id_usuario;
-	}
-
 
 
 	
@@ -108,14 +110,31 @@ public class PedidoCarrito {
 	
 
 
-	public List<Producto> getProducto() {
-		return producto;
+
+
+	
+
+
+	public String getUsuario() {
+		return usuario;
 	}
 
 
 
-	public void setProducto(List<Producto> producto) {
-		this.producto = producto;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	public String getCod_producto() {
+		return cod_producto;
+	}
+
+
+
+	public void setCod_producto(String cod_producto) {
+		this.cod_producto = cod_producto;
 	}
 
 
@@ -242,12 +261,15 @@ public class PedidoCarrito {
 
 	@Override
 	public String toString() {
-		return "PedidoCarrito [id_pedido=" + id_pedido + ", id_usuario=" + id_usuario + ", producto=" + producto
+		return "PedidoCarrito [id_pedido=" + id_pedido + ", usuario=" + usuario + ", cod_producto=" + cod_producto
 				+ ", car_cantidad=" + car_cantidad + ", car_precio=" + car_precio + ", car_envio=" + car_envio
 				+ ", car_pago=" + car_pago + ", car_tarjeta=" + car_tarjeta + ", car_feCadud=" + car_feCadud
 				+ ", car_ccv=" + car_ccv + ", car_nombre=" + car_nombre + ", car_stat=" + car_stat + ", car_feCambio="
 				+ car_feCambio + "]";
 	}
+
+
+
 	
 	
 	

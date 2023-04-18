@@ -3,10 +3,11 @@ package rf.com.tienda.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import rf.com.tienda.dominio.Categoria;
 import rf.com.tienda.repository.CategoriaRepository;
-
+@Service
 public class CategoriaServicio implements ICategoria{
 
 	@Autowired
@@ -16,7 +17,9 @@ public class CategoriaServicio implements ICategoria{
 	public List<Categoria> lista()
 	{
 		
-		return repositorio.findAll();
+		List<Categoria> pepito= repositorio.findAll();
+		System.out.println(pepito);
+		return pepito;
 	}
 	
 	

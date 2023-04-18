@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import rf.com.tienda.util.ErrorMessages;
 import rf.com.tienda.util.Validator;
@@ -15,18 +16,20 @@ import rf.com.tienda.util.Validator;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int id_usuario;
+	@Column(name = "user_nombre", nullable = false)
 	private String user_nombre;
+	@Column(name = "user_email", nullable = false)
 	private String user_email;
+	@Column(name = "user_pass", nullable = false)
 	private String user_pass;
+	@Column(name = "user_tipo", nullable = false)
 	private int user_tipo;
-	@Column(name = "user_dni", nullable = true, columnDefinition = "VARCHAR(12) DEFAULT NULL")
 	private String user_dni;
-	@Column(name = "user_fecAlta", nullable = true, columnDefinition = "DATE DEFAULT NULL")
 	private LocalDate user_fecAlta;
-	@Column(name = "user_fecConfirmacion", nullable = true, columnDefinition = "DATE DEFAULT NULL")
 	private LocalDate user_fecConfirmacion;
+	
 	
 	
 	

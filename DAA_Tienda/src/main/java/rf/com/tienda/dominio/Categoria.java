@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import rf.com.tienda.exception.DomainException;
 import rf.com.tienda.util.Validator;
@@ -21,7 +22,7 @@ import rf.com.tienda.util.Validator;
 public class Categoria {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int id_categoria;			//identificador categoria
 	
 	private String cat_nombre;			//nombre de la categoria
@@ -29,6 +30,8 @@ public class Categoria {
 	@Column(nullable = false)
 	private String cat_descripcion;		//descripcion de la categoria
 	
+	//@OneToOne(mappedBy = "categoria")
+	//private Producto producto;
 	
 	public Categoria(){}
 	

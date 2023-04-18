@@ -23,7 +23,7 @@ import rf.com.tienda.util.Validator;
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private String id_producto;         //id de producto
 	@Column(name = "pro_descripcion", nullable = false, columnDefinition = "VARCHAR(100) NOT NULL DEFAULT ''")
 	private String pro_descripcion;
@@ -33,23 +33,21 @@ public class Producto {
 	@Column
 	@ColumnDefault("INTEGER DEFAULT 0")
 	private int pro_stock;
-	@Column(nullable = false)
 	private LocalDate pro_fecRepos;
-	@Column(nullable = false)
 	private LocalDate pro_fecActi;
-	@Column(nullable = false)
 	private LocalDate pro_fecDesacti;
+	@Column(name = " pro_uniVenta", nullable = false)
 	private String pro_uniVenta;
 	@Column
 	@ColumnDefault("INTEGER DEFAULT 0")
 	private double pro_cantXUniVenta;
-	@Column(name = "pro_uniUltNivel", nullable = true, columnDefinition = "VARCHAR(100) DEFAULT NULL")
 	private String pro_uniUltNivel;
+	@Column(name = "id_pais", nullable = false)
 	private int id_pais;
-	@Column(name = "pro_usoRecomendado", nullable = true, columnDefinition = "VARCHAR(2000) DEFAULT NULL")
 	private String pro_usoRecomendado;
-	@OneToOne	
-	private Categoria id_categoria;
+	@OneToOne
+	@JoinColumn(name="id_categoria")
+	private Categoria categoria;
 	//campo para la relación many to one
 	@ManyToOne
 	@JoinColumn(name="producto")
@@ -305,14 +303,29 @@ public class Producto {
 	
 
 
-	public Categoria getId_categoria() {
-		return id_categoria;
+
+
+
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
 
 
-	public void setId_categoria(Categoria id_categoria) {
-		this.id_categoria = id_categoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	public PedidoCarrito getPedido() {
+		return pedido;
+	}
+
+
+
+	public void setPedido(PedidoCarrito pedido) {
+		this.pedido = pedido;
 	}
 
 
@@ -372,7 +385,7 @@ public class Producto {
 				+ pro_fecRepos + ", pro_fecActi=" + pro_fecActi + ", pro_fecDesacti=" + pro_fecDesacti
 				+ ", pro_uniVenta=" + pro_uniVenta + ", pro_cantXUniVenta=" + pro_cantXUniVenta + ", pro_uniUltNivel="
 				+ pro_uniUltNivel + ", id_pais=" + id_pais + ", pro_usoRecomendado=" + pro_usoRecomendado
-				+ ", id_categoria=" + id_categoria + ", pro_stkReservado=" + pro_stkReservado + ", pro_nStkAlto="
+				+ ", categoria=" + categoria + ", pro_stkReservado=" + pro_stkReservado + ", pro_nStkAlto="
 				+ pro_nStkAlto + ", pro_nStkBajo=" + pro_nStkBajo + ", pro_stat=" + pro_stat + ", getId_producto()="
 				+ getId_producto() + ", getPro_descripcion()=" + getPro_descripcion() + ", getPro_desLarga()="
 				+ getPro_desLarga() + ", getPro_precio()=" + getPro_precio() + ", getPro_stock()=" + getPro_stock()
@@ -380,7 +393,7 @@ public class Producto {
 				+ ", getPro_fecDesacti()=" + getPro_fecDesacti() + ", getPro_uniVenta()=" + getPro_uniVenta()
 				+ ", getPro_cantXUniVenta()=" + getPro_cantXUniVenta() + ", getPro_uniUltNivel()="
 				+ getPro_uniUltNivel() + ", getId_pais()=" + getId_pais() + ", getPro_usoRecomendado()="
-				+ getPro_usoRecomendado() + ", getId_categoria()=" + getId_categoria() + ", getPro_stkReservado()="
+				+ getPro_usoRecomendado() + ", getId_categoria()=" + getCategoria() + ", getPro_stkReservado()="
 				+ getPro_stkReservado() + ", getPro_nStkAlto()=" + getPro_nStkAlto() + ", getPro_nStkBajo()="
 				+ getPro_nStkBajo() + ", getPro_stat()=" + getPro_stat() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
