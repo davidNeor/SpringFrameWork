@@ -26,10 +26,9 @@ public class PedidoCarrito {
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int id_pedido;
-	//@OneToOne(mappedBy = "id_usuario")	
+	
 	private String usuario;
-	//como va a ser una relación one-to-many, lo mejor es implementar este campo mediante una colección, aquí irá una relación one-to-many
-	//@OneToMany(mappedBy="pedido")	
+	
 	private String cod_producto;
 	@Column( nullable = false)
 	private int car_cantidad;
@@ -146,7 +145,12 @@ public class PedidoCarrito {
 
 
 	public void setCar_cantidad(int car_cantidad) {
-		this.car_cantidad = car_cantidad;
+		
+		if(car_cantidad>0)
+		{
+			this.car_cantidad = car_cantidad;
+
+		}
 	}
 
 

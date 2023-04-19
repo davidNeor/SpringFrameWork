@@ -23,46 +23,33 @@ import rf.com.tienda.util.Validator;
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	private String id_producto;         //id de producto
-	@Column(name = "pro_descripcion", nullable = false, columnDefinition = "VARCHAR(100) NOT NULL DEFAULT ''")
+	private String id_producto;        
+	@Column(nullable = false)	
 	private String pro_descripcion;
 	private String pro_desLarga;
-	@Column(name = "pro_precio", nullable = false)
+	@Column(nullable = false)
 	private double pro_precio;
-	@Column
-	@ColumnDefault("INTEGER DEFAULT 0")
+	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private int pro_stock;
 	private LocalDate pro_fecRepos;
 	private LocalDate pro_fecActi;
 	private LocalDate pro_fecDesacti;
-	@Column(name = " pro_uniVenta", nullable = false)
+	@Column( nullable = false)
 	private String pro_uniVenta;
-	@Column
-	@ColumnDefault("INTEGER DEFAULT 0")
+	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private double pro_cantXUniVenta;
 	private String pro_uniUltNivel;
-	@Column(name = "id_pais", nullable = false)
+	@Column( nullable = false)
 	private int id_pais;
 	private String pro_usoRecomendado;
-	@OneToOne
-	@JoinColumn(name="id_categoria")
-	private Categoria categoria;
-	//campo para la relación many to one
-	@ManyToOne
-	@JoinColumn(name="producto")
-	private PedidoCarrito pedido;
-	@Column
-	@ColumnDefault("INTEGER DEFAULT 0")
+	private  Integer categoria;	
+	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private int pro_stkReservado;
-	@Column
-	@ColumnDefault("INTEGER DEFAULT 0")
+	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private int pro_nStkAlto;
-	@Column
-	@ColumnDefault("INTEGER DEFAULT 0")
+	@Column(columnDefinition ="INTEGER DEFAULT 0" )
 	private int pro_nStkBajo;
-	@Column
-	@ColumnDefault("A")
+	@Column(columnDefinition = "VARCHAR(1) DEFAULT 'A'")
 	private Character pro_stat;
 	
 	
@@ -306,26 +293,15 @@ public class Producto {
 
 
 
-	public Categoria getCategoria() {
+
+	public Integer getCategoria() {
 		return categoria;
 	}
 
 
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(Integer categoria) {
 		this.categoria = categoria;
-	}
-
-
-
-	public PedidoCarrito getPedido() {
-		return pedido;
-	}
-
-
-
-	public void setPedido(PedidoCarrito pedido) {
-		this.pedido = pedido;
 	}
 
 

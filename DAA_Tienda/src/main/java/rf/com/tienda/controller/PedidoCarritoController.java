@@ -12,45 +12,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import rf.com.tienda.dominio.Usuario;
-import rf.com.tienda.exception.DomainException;
-import rf.com.tienda.services.IUsuario;
+import rf.com.tienda.dominio.PedidoCarrito;
+import rf.com.tienda.services.IPedidoCarrito;
 
 @RestController
-@RequestMapping("/usuario")
-public class UserController {
+@RequestMapping("/pedido")
+public class PedidoCarritoController {
 
 	@Autowired
-	private IUsuario userrepo;
+	IPedidoCarrito pedidointeface;
+	
 	
 	@GetMapping
-	public List<Usuario> lista()
+	public List<PedidoCarrito> lista()
 	{
-		return userrepo.lista();
+		return pedidointeface.lista();
 	}
 	
+	
 	@PostMapping
-	public Usuario insertarUsuario(@RequestBody Usuario user) throws DomainException
+	public PedidoCarrito insertaPedido(@RequestBody PedidoCarrito pedido)
 	{
-		return userrepo.insertaUsuario(user);
+		
+		return pedidointeface.insertaPedido(pedido);
 	}
 	
 	
 	@PutMapping
-	public Usuario actualizaUsuario(@RequestBody Usuario user) throws DomainException
+	public PedidoCarrito actualizaPedido(@RequestBody PedidoCarrito pedido)
 	{
-		return userrepo.actualizaUsuario(user);
-		
+		return pedidointeface.actualizaPedido(pedido);
 	}
 	
 	
 	@DeleteMapping("/{id}")	
-	public void eliminaUsuario(@PathVariable("id") Integer id )
+	public void eliminaPedido(@PathVariable("id") Integer id )
 	{
 		
-		userrepo.eliminaUsuario(id);
+		pedidointeface.eliminaPedido(id);
 		
 		
 	}
+	
 	
 }

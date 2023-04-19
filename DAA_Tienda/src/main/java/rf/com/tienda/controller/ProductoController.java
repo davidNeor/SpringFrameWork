@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import rf.com.tienda.dominio.Categoria;
@@ -18,6 +19,7 @@ import rf.com.tienda.services.ICategoria;
 import rf.com.tienda.services.IProducto;
 
 @RestController
+@RequestMapping("/producto")
 public class ProductoController {
 
 @Autowired

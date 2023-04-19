@@ -30,8 +30,7 @@ public class Categoria {
 	@Column(nullable = false)
 	private String cat_descripcion;		//descripcion de la categoria
 	
-	//@OneToOne(mappedBy = "categoria")
-	//private Producto producto;
+	
 	
 	public Categoria(){}
 	
