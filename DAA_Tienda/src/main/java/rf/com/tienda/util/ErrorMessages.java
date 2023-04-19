@@ -41,6 +41,11 @@ public class ErrorMessages {
 	 */
 	public final static String PROERR_007="El stock no puede ser negativo";
 	
+	/**
+	 * CARACTER VÁLIDO
+	 */
+	public final static String PRO_ERR8="El caracter no pertenece al rango adecuado";
+	
 	/* MENSAJES PARA USUARIOS ******************************/ 
 	
 	/**
@@ -66,7 +71,7 @@ public class ErrorMessages {
 	public final static String USUERR_005="La fecha debe ser la actual";
 	
 	
-	
+
 	
 	
 }

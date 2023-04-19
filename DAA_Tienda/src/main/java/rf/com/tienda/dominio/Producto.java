@@ -348,8 +348,17 @@ public class Producto {
 
 
 
-	public void setPro_stat(Character pro_stat) {
-		this.pro_stat = pro_stat;
+	public void setPro_stat(Character pro_stat) throws DomainException{
+		 
+		if(pro_stat=='A'||pro_stat=='B')
+		{
+			this.pro_stat = pro_stat;
+		}
+		else
+		{
+			throw new DomainException(ErrorMessages.PRO_ERR8);
+		}
+		
 	}
 
 
