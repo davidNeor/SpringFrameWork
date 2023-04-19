@@ -78,7 +78,7 @@ public class Usuario {
 
 
 
-	public void setUser_email(String user_email) {
+	public void setUser_email(String user_email)throws DomainException {
 		
 		if(Validator.userEmailValido(user_email))
 		{
@@ -86,7 +86,8 @@ public class Usuario {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.USUERR_002);
+			throw new DomainException(ErrorMessages.USUERR_002);
+			
 		}
 		
 	}
@@ -99,14 +100,16 @@ public class Usuario {
 
 
 
-	public void setUser_pass(String user_pass) {
+	public void setUser_pass(String user_pass)throws DomainException {
 		if(Validator.userPassValido(user_pass))
 		{
 			this.user_pass = user_pass;
 		}
 		else
 		{
-			System.out.println(ErrorMessages.USUERR_003);
+			throw new DomainException(ErrorMessages.USUERR_003);
+			
+			
 		}
 		
 	}
@@ -131,7 +134,7 @@ public class Usuario {
 
 
 
-	public void setUser_dni(String user_dni) {
+	public void setUser_dni(String user_dni)throws DomainException {
 		
 		if(Validator.userDniValido(user_dni))
 		{
@@ -139,7 +142,7 @@ public class Usuario {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.USUERR_004);
+			throw new DomainException(ErrorMessages.USUERR_004);
 		}
 	}
 
