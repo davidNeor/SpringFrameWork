@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import rf.com.tienda.exception.DomainException;
 import rf.com.tienda.util.ErrorMessages;
 import rf.com.tienda.util.Validator;
 
@@ -57,7 +58,7 @@ public class Usuario {
 
 
 
-	public void setUser_nombre(String user_nombre) {
+	public void setUser_nombre(String user_nombre) throws DomainException{
 		if(Validator.userNombreValido(user_nombre))
 		{
 			this.user_nombre = user_nombre;
@@ -65,7 +66,7 @@ public class Usuario {
 		}
 		else
 		{
-			System.out.println(ErrorMessages.USUERR_001);
+			throw new DomainException(ErrorMessages.USUERR_001);
 		}
 	}
 

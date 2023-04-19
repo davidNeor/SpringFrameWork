@@ -236,24 +236,7 @@ public class ProductoTest {
 	
 	
 	
-	
-	/*
-	 * public void setId_producto(String id_producto) throws DomainException  {
-		
-		if(Validator.esIdProductoValido(id_producto))
-		{
-			this.id_producto = id_producto;
-		}
-		else
-		{
-			throw new DomainException(ErrorMessages.PROERR_002);
-		}
-		
-	}
 
-	 */
-	
-	
 	
 	
 }
